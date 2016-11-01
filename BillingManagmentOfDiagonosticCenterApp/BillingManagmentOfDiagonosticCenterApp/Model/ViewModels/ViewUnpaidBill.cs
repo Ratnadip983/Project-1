@@ -5,6 +5,7 @@ using System.Web;
 
 namespace BillingManagmentOfDiagonosticCenterApp.Model.ViewModels
 {
+    [Serializable]
     public class ViewUnpaidBill
     {
         public string BillNo { get; set; }

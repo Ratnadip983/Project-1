@@ -5,6 +5,7 @@ using System.Web;
 
 namespace BillingManagmentOfDiagonosticCenterApp.Model.ViewModels
 {
+    [Serializable]
     public class ViewTestWithTotalTest
     {
         public string Name { get; set; }
