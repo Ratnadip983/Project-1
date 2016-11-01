@@ -74,10 +74,10 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
 
         protected void saveButton_Click(object sender, EventArgs e)
         {
-            string name = nameTextBox.Value;
+            string name = nameTextBox.Value.Trim();
             DateTime dateBirth = DateTime.Parse(dateOfBirthTextBox.Value);
             double fee = double.Parse(feeTextBox.Value);
-            string mobileNo = mobileTextBox.Value.ToString();
+            string mobileNo = mobileTextBox.Value.ToString().Trim();
 
             DateTime currentDateTime=DateTime.Now;
             List<Test> testList = (List<Test>)ViewState["TestList"];
