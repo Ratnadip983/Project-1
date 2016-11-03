@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BillingManagmentOfDiagonosticCenterApp.Model
 {
-    [Serializable()]
+    [Serializable]
     public class Test
     {
         public int Id { get; set; }

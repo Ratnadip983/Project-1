@@ -5,6 +5,10 @@
     margin-top: 5%;
 }
 
-#gridViewControl {
-    height: 50px;
-} 
+.page_color {
+    background-color: #F2F5F5;
+}
+.panel_postion {
+    margin-top: 10%;
+}
+

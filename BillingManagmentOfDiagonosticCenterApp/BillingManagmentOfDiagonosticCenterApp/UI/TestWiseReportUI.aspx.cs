@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BillingManagmentOfDiagonosticCenterApp.BLL;
 using BillingManagmentOfDiagonosticCenterApp.Model.ViewModels;
+using System.IO;
+using System.Text;
 using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
@@ -18,16 +18,16 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void showReportButton_Click(object sender, EventArgs e)
         {
+
             DateTime lowerDate = DateTime.Parse(lowerDateTextBox.Value.ToString());
             DateTime upperDate = DateTime.Parse(upperDateTextBox.Value.ToString());
 
-            TestManager testManager=new TestManager();
-            List<ViewTestWithTotalTest> viewTestWithTotalTestslList = testManager.GetTestWiseReportByDate(lowerDate,upperDate);
+            TestManager testManager = new TestManager();
+            List<ViewTestWithTotalTest> viewTestWithTotalTestslList = testManager.GetTestWiseReportByDate(lowerDate, upperDate);
             testShowGridView.DataSource = viewTestWithTotalTestslList;
             testShowGridView.DataBind();
 
@@ -39,6 +39,12 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
             }
 
             totalTextBox.Value = totalAmount.ToString();
+        }
+
+        protected void logoutButton_OnClick(object sender, EventArgs e)
+        {
+            Session.Remove("UserName");
+            Response.Redirect("Index.aspx");
         }
 
         protected void pdfButton_Click(object sender, EventArgs e)

@@ -10,7 +10,7 @@
 namespace BillingManagmentOfDiagonosticCenterApp.UI {
     
     
-    public partial class TestTypeEntryUI {
+    public partial class Index {
         
         /// <summary>
         /// form1 control.
@@ -22,75 +22,48 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// logoutButton control.
+        /// userNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button logoutButton;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText userNameTextBox;
         
         /// <summary>
-        /// testTypeDangerDiv control.
+        /// passTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl testTypeDangerDiv;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword passTextBox;
         
         /// <summary>
-        /// testTypeDangerAlartLabel control.
+        /// loginFaildLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label testTypeDangerAlartLabel;
+        protected global::System.Web.UI.WebControls.Label loginFaildLabel;
         
         /// <summary>
-        /// testTypeSuccessfullDiv control.
+        /// remaindMeCheckBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl testTypeSuccessfullDiv;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox remaindMeCheckBox;
         
         /// <summary>
-        /// testTypeSuccessfullAlartLabel control.
+        /// submitButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label testTypeSuccessfullAlartLabel;
-        
-        /// <summary>
-        /// testTypeNameTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText testTypeNameTextBox;
-        
-        /// <summary>
-        /// testTypeSaveButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button testTypeSaveButton;
-        
-        /// <summary>
-        /// testTypeShowGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView testTypeShowGridView;
+        protected global::System.Web.UI.WebControls.Button submitButton;
     }
 }

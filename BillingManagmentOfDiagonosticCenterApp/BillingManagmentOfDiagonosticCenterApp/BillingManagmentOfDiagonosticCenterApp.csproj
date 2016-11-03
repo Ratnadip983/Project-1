@@ -40,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\Visual Studio 2015\Projects\PDFGeneratingApp\PDFGeneratingApp\itextsharp.dll</HintPath>
+      <HintPath>.\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
@@ -72,6 +72,7 @@
     <Content Include="Bootstrap\js\npm.js" />
     <Content Include="UI\AmountInfoUI.aspx" />
     <Content Include="UI\DueBillReportUI.aspx" />
+    <Content Include="UI\Index.aspx" />
     <Content Include="UI\PatientInfoEntryUI.aspx" />
     <Content Include="UI\TestEntryUI.aspx" />
     <Content Include="UI\TestTypeEntryUI.aspx" />
@@ -85,16 +86,19 @@
     <Compile Include="BLL\PatientManager.cs" />
     <Compile Include="BLL\TestManager.cs" />
     <Compile Include="BLL\TestTypeManager.cs" />
+    <Compile Include="BLL\UserManager.cs" />
     <Compile Include="DAL\BillGateway.cs" />
     <Compile Include="DAL\OrderGateway.cs" />
     <Compile Include="DAL\PatientGateway.cs" />
     <Compile Include="DAL\TestGateway.cs" />
     <Compile Include="DAL\TestTypeGateway.cs" />
+    <Compile Include="DAL\UserGateway.cs" />
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\TestType.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Model\ViewModels\ViewAllTestWithType.cs" />
     <Compile Include="Model\ViewModels\ViewTestWithTotalTest.cs" />
     <Compile Include="Model\ViewModels\ViewTypeWithTotalTest.cs" />
@@ -113,6 +117,13 @@
     </Compile>
     <Compile Include="UI\DueBillReportUI.aspx.designer.cs">
       <DependentUpon>DueBillReportUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\PatientInfoEntryUI.aspx.cs">
       <DependentUpon>PatientInfoEntryUI.aspx</DependentUpon>

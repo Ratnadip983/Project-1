@@ -14,6 +14,7 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             testTypeDangerDiv.Visible = false;
         }
 
@@ -82,6 +83,12 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
                 
 
             }
+        }
+
+        protected void logoutButton_OnClick(object sender, EventArgs e)
+        {
+            Session.Remove("UserName");
+            Response.Redirect("Index.aspx");
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BillingManagmentOfDiagonosticCenterApp.BLL;
 using BillingManagmentOfDiagonosticCenterApp.Model.ViewModels;
+using System.IO;
+using System.Text;
 using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
@@ -27,7 +27,7 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
             DateTime upperDate = DateTime.Parse(upperDateTextBox.Value.ToString());
 
             TestTypeManager testTypeManager = new TestTypeManager();
-            List<ViewTypeWithTotalTest> viewTypeWithTotalTestslList = testTypeManager.GetTypeReportByDate(lowerDate,upperDate);
+            List<ViewTypeWithTotalTest> viewTypeWithTotalTestslList = testTypeManager.GetTypeReportByDate(lowerDate, upperDate);
             typeShowGridView.DataSource = viewTypeWithTotalTestslList;
             typeShowGridView.DataBind();
             ViewState["viewTypeWithTotalTestslList"] = viewTypeWithTotalTestslList;
@@ -41,9 +41,16 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
             totalAmountTextBox.Value = totalAmount.ToString();
         }
 
+        protected void logoutButton_OnClick(object sender, EventArgs e)
+        {
+            Session.Remove("UserName");
+            Response.Redirect("Index.aspx");
+        }
+
+        
         protected void pdfButton_Click(object sender, EventArgs e)
         {
-            List<ViewTypeWithTotalTest> viewTypeWithTotalTestslList = (List<ViewTypeWithTotalTest>) ViewState["viewTypeWithTotalTestslList"];
+            List<ViewTypeWithTotalTest> viewTypeWithTotalTestslList = (List<ViewTypeWithTotalTest>)ViewState["viewTypeWithTotalTestslList"];
 
             using (StringWriter sw = new StringWriter())
             {

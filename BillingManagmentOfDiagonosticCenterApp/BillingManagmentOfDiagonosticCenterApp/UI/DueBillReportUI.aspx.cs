@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,13 +13,13 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
 
+
 namespace BillingManagmentOfDiagonosticCenterApp.UI
 {
     public partial class DueBillReportUI : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void reportShowButton_Click(object sender, EventArgs e)
@@ -47,17 +46,18 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
 
                 totalAmountTextBox.Value = totalAmount.ToString();
             }
-            else
-            {
-                testTypeDangerAlartLabel.Text = "Not Found!";
-                testTypeDangerDiv.Visible = true;
-            }
+            
+        }
 
+        protected void logoutButton_OnClick(object sender, EventArgs e)
+        {
+            Session.Remove("UserName");
+            Response.Redirect("Index.aspx");
         }
 
         protected void pdfButton_Click(object sender, EventArgs e)
         {
-            List<ViewUnpaidBill> viewUnpaidBillList = (List<ViewUnpaidBill>) ViewState["viewUnpaidBillList"];
+            List<ViewUnpaidBill> viewUnpaidBillList = (List<ViewUnpaidBill>)ViewState["viewUnpaidBillList"];
 
             using (StringWriter sw = new StringWriter())
             {

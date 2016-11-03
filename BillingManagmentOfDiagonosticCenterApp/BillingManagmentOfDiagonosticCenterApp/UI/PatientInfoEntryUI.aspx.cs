@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BillingManagmentOfDiagonosticCenterApp.BLL;
 using BillingManagmentOfDiagonosticCenterApp.Model;
-using BillingManagmentOfDiagonosticCenterApp.Model.ViewModels;
+using System.IO;
+using System.Text;
 using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
@@ -22,7 +21,12 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["UserName"] != null)
+            {
+                successLabel.Text = "Welcome " + Session["UserName"].ToString();
+               
+            }
+
             testTypeDangerDiv.Visible = false;
             testTypeSuccessfullDiv.Visible = false;
             if (!IsPostBack)
@@ -66,12 +70,24 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
             else
             {
                 List<Test> testList =(List<Test>) ViewState["TestList"];
-                testList.Add(test);
-                ViewState["TestList"] = testList;
+                //if (!IsTestExistInList(test))
+                //{
+                    testList.Add(test);
+                    ViewState["TestList"] = testList;
+                //}
+                //else
+                //{
+                //    testTypeDangerAlartLabel.Text = "This test is already added!!";
+                //    testTypeDangerDiv.Visible = true;
+                //    testTypeSuccessfullDiv.Visible = false;
+                //}
             }
             
             double totalAmount = Convert.ToDouble(ViewState["TotalAmount"]);
-            totalAmount += double.Parse(feeTextBox.Value);
+            //if (!IsTestExistInList(test))
+            //{
+                totalAmount += double.Parse(feeTextBox.Value);
+            //}
             ViewState["TotalAmount"] = totalAmount;
             totalTextBox.Value = totalAmount.ToString();
 
@@ -80,10 +96,10 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
 
         protected void saveButton_Click(object sender, EventArgs e)
         {
-            string name = nameTextBox.Value.Trim();
+            string name = nameTextBox.Value;
             DateTime dateBirth = DateTime.Parse(dateOfBirthTextBox.Value);
             double fee = double.Parse(feeTextBox.Value);
-            string mobileNo = mobileTextBox.Value.ToString().Trim();
+            string mobileNo = mobileTextBox.Value.ToString();
 
             DateTime currentDateTime=DateTime.Now;
             List<Test> testList = (List<Test>)ViewState["TestList"];
@@ -146,9 +162,31 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
             }
         }
 
-        public void GetReportInPdf(string name,string mobileNo,string billNo,DateTime dateOfBirth)
+        protected void logoutButton_Click(object sender, EventArgs e)
         {
+            Session.Remove("UserName");
+            Response.Redirect("Index.aspx");
+        }
+
+        public bool IsTestExistInList(Test test)
+        {
+            bool isExist = false;
             List<Test> testList = (List<Test>) ViewState["TestList"];
+            foreach (Test testofList in testList)
+            {
+                if (test.Id==testofList.Id)
+                {
+                    isExist = true;
+                    break;
+                }
+            }
+            return isExist;
+
+        }
+
+        public void GetReportInPdf(string name, string mobileNo, string billNo, DateTime dateOfBirth)
+        {
+            List<Test> testList = (List<Test>)ViewState["TestList"];
 
             using (StringWriter sw = new StringWriter())
             {
@@ -172,7 +210,7 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
                     sb.Append(name);
                     sb.Append("</td></tr>");
                     sb.Append("<tr><td>Date of Birth: ");
-                    sb.Append(dateOfBirth);
+                    sb.Append(dateOfBirth.ToString("yyyy-MM-dd"));
                     sb.Append("</td></tr>");
                     sb.Append("<tr><td>Mobile No: ");
                     sb.Append(mobileNo);
@@ -197,7 +235,7 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
                     int count = 0;
                     double totalAmount = 0;
 
-                    
+
                     foreach (Test test in testList)
                     {
                         sb.Append("<tr>");

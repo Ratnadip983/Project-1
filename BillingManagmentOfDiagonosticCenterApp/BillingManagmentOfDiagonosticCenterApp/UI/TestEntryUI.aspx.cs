@@ -105,5 +105,11 @@ namespace BillingManagmentOfDiagonosticCenterApp.UI
             testShowGridView.DataSource = testListWithType;
             testShowGridView.DataBind();
         }
+
+        protected void logoutButton_OnClick(object sender, EventArgs e)
+        {
+            Session.Remove("UserName");
+            Response.Redirect("Index.aspx");
+        }
     }
 }
